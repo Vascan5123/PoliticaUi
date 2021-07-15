@@ -1,6 +1,6 @@
 politica-ui:
   forum:
-    text_top_left: "All Questions"
+    text_top_left: "Toate discuțiile"
     sort_button_1: "Cele mai actuale"
     sort_button_2: "Cele mai citite"
     sort_button_3: "Cele mai noi"

@@ -35,6 +35,19 @@
 .IndexPage-toolbar-action>li {
     margin: 0px !important;
 }
+@media (max-width: 767px){
+    .IndexPage-toolbar {
+        text-align: center;
+
+    }
+    .IndexPage-toolbar-action {
+        zoom: 0.7;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        width: 100%;
+    }
+    
+}
 .IndexPage-toolbar-action>li>a {
     margin: 0px !important;
     border-radius: 0px;
@@ -50,8 +63,35 @@
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
 }
-
-
-
-
-
+.DiscussionListItem-content {
+    display: flex !important;
+}
+.DiscussionListItem-options {
+    padding: 12px 0;
+}
+@media (min-width: 768px){
+    .DiscussionListItem-options {
+        margin-left: -52px;
+        width: 80px;
+        margin-right: 15px;
+    }
+}
+@media (max-width: 767px){
+    .DiscussionListItem-options {
+        margin-left: -45px;
+        width: 80px;
+        margin-right: 15px;
+    }
+    .DiscussionListItem-info .item-excerpt {
+        display: block !important;
+    }
+}
+.DiscussionListItem-options-blocks {
+    text-align: center;
+}
+.DiscussionListItem-options-blocks>h3 {
+    margin: 0px !important;
+}
+.item-discussion-views, .DiscussionListItem-count {
+    display: none !important;
+}

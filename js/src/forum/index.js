@@ -8,10 +8,11 @@ import ComposerBody from 'flarum/components/ComposerBody';
 import DiscussionListItem from 'flarum/components/DiscussionListItem';
 import TagHero from 'flarum/tags/components/TagHero';
 import TextEditor from 'flarum/components/TextEditor';
+import CardItem from './components/CardItem.js';
 
 
 app.initializers.add('vascan/politica-ui', () => {
-
+  CardItem();
   extend(IndexPage.prototype, 'viewItems', function (items) {
     // Удаление кнопки сортировки
     if (items.has('sort')) {
