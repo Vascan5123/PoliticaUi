@@ -78,18 +78,24 @@ export default function () {
                     <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-options">
 
                         <div className="DiscussionListItem-options-blocks">
-                            <h3 className="">{highlight("0", this.highlightRegExp)}</h3>
-                            <p className="">{highlight("votes", this.highlightRegExp)}</p>
+                            <Link className="" href={user ? app.route.user(user) : '#'}>
+                                {avatar(user, { title: '' })}
+                            </Link>
                         </div>
 
                         <div className="DiscussionListItem-options-blocks">
-                            <h3 className="">{highlight(discussion.commentCount() -1, this.highlightRegExp)}</h3>
-                            <p className="">{highlight("answers", this.highlightRegExp)}</p>
+                            <h3 className="">{highlight("0", this.highlightRegExp)}</h3>
+                            <p className="">{app.translator.trans('politica-ui.forum.likes')}</p>
+                        </div>
+
+                        <div className="DiscussionListItem-options-blocks">
+                            <h3 className="">{highlight(discussion.commentCount() - 1, this.highlightRegExp)}</h3>
+                            <p className="">{app.translator.trans('politica-ui.forum.answers')}</p>
                         </div>
 
                         <div className="DiscussionListItem-options-blocks">
                             <h3 className="">{highlight(discussion.viewCount(), this.highlightRegExp)}</h3>
-                            <p className="">{highlight("views", this.highlightRegExp)}</p>
+                            <p className="">{app.translator.trans('politica-ui.forum.views')}</p>
                         </div>
 
                     </Link>
