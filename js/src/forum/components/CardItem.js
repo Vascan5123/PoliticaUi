@@ -42,7 +42,28 @@ export default function () {
             jumpTo = Math.min(discussion.lastPostNumber(), (discussion.lastReadPostNumber() || 0) + 1);
         }
 
-        console.log(discussion);
+        let tags = listItems(this.infoItems().toArray())[0];
+
+        let terminalPost;
+        for (let x = 0; x < listItems(this.infoItems().toArray()).length; x++) {
+            if (listItems(this.infoItems().toArray())[x].key) {
+                if (listItems(this.infoItems().toArray())[x].key == "terminalPost") {
+                    terminalPost = listItems(this.infoItems().toArray())[x];
+                }
+            }
+        }
+        console.log(terminalPost)
+
+        let tagLength = tags.children[0].children.length;
+
+        for (let i = 0; i < tagLength; i++) {
+            if ((tags.children[0].children[i].children[0].children[0].tag != "i") && (tags.children[0].children[i].attrs.className.includes("TagLabel--child") == false)) {
+                tags.children[0].children[i].attrs.className += " d-none"
+                /* console.log(tags.children[0].children[i].attrs.className) */
+            }
+        }
+
+        /* console.log(user); */
 
         return (
             <div {...attrs}>
@@ -77,11 +98,11 @@ export default function () {
 
                     <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-options">
 
-                        <div className="DiscussionListItem-options-blocks">
+                        {/* <div className="DiscussionListItem-options-blocks">
                             <Link className="" href={user ? app.route.user(user) : '#'}>
                                 {avatar(user, { title: '' })}
                             </Link>
-                        </div>
+                        </div> */}
 
                         <div className="DiscussionListItem-options-blocks">
                             <h3 className="">{highlight("0", this.highlightRegExp)}</h3>
@@ -104,7 +125,20 @@ export default function () {
 
                     <Link href={app.route.discussion(discussion, jumpTo)} className="DiscussionListItem-main">
                         <h3 className="DiscussionListItem-title">{highlight(discussion.title(), this.highlightRegExp)}</h3>
-                        <ul className="DiscussionListItem-info">{listItems(this.infoItems().toArray())}</ul>
+
+                        <ul className="DiscussionListItem-info">{listItems(this.infoItems().toArray())[listItems(this.infoItems().toArray()).length - 1]}</ul>
+                        <div className="DiscussionListItem_tags_and_author">
+                            <ul className="DiscussionListItem-info-tags">{tags}</ul>
+                            <div className="DiscussionListItem-options-author">
+                                <Link className="author-link" href={user ? app.route.user(user) : '#'}>
+                                    {avatar(user, { title: '' })}
+                                    <div>
+                                        <p>{user.data.attributes.displayName}</p>
+                                        <p>{listItems(terminalPost)}</p>
+                                    </div>
+                                </Link>
+                            </div>
+                        </div>
                     </Link>
 
                     <span
