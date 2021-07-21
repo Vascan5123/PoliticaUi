@@ -52,7 +52,6 @@ export default function () {
                 }
             }
         }
-        console.log(terminalPost)
 
         let tagLength = tags.children[0].children.length;
 
