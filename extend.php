@@ -12,11 +12,18 @@
 namespace Vascam\PoliticaUi;
 
 use Flarum\Extend;
+use Flarum\Api\Event\Serializing;
+use Swader\Web3Address\Listener\AddUserWeb3AddressAttribute;
 
 return [
     (new Extend\Frontend('forum'))
-        ->js(__DIR__.'/js/dist/forum.js')
-        ->css(__DIR__.'/resources/less/forum.less'),
-    
+        ->js(__DIR__ . '/js/dist/forum.js')
+        ->css(__DIR__ . '/resources/less/forum.less'),
+
+    (new Extend\Event())->listen(Serializing::class, AddUserWeb3AddressAttribute::class),
+
     new Extend\Locales(__DIR__ . '/resources/locale')
+
+
+
 ];
