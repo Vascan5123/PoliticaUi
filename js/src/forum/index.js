@@ -18,18 +18,15 @@ app.initializers.add('vascan/politica-ui', () => {
     if (items.has('sort')) {
       items.remove('sort');
     }
-    // Добавляем текст сверху
-    /* items.add(
-      'Text_title_center_block',
-      <p class="Text_title_center_block_class"><span> {app.translator.trans('politica-ui.forum.text_top_left')}</span></p>) */
+
     const params = app.search.stickyParams();
-    
+
     items.add(
       'allDiscussions',
       LinkButton.component(
         {
           href: app.route('index', params),
-          icon: 'far fa-comments',
+          icon: 'far fa-list-alt',
           className: "Text_title_center_block_class"
         },
         app.translator.trans('core.forum.index.all_discussions_link')
@@ -40,14 +37,10 @@ app.initializers.add('vascan/politica-ui', () => {
   });
 
   extend(IndexPage.prototype, 'navItems', function (items) {
-    // Удаление кнопки сортировки
+
     if (items.has('allDiscussions')) {
       items.remove('allDiscussions');
     }
-    // Добавляем текст сверху
-    /* items.add(
-      'Text_title_center_block',
-      <p class="Text_title_center_block_class"><span> {app.translator.trans('politica-ui.forum.text_top_left')}</span></p>) */
 
   });
 
