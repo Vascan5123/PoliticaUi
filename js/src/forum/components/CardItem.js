@@ -62,7 +62,14 @@ export default function () {
             }
         }
 
-        console.log(user);
+        function likes() {
+            if (discussion.data.attributes.votes) {
+                return discussion.votes()
+            } else {
+                return "0"
+            }
+        }
+
 
         return (
             <div {...attrs}>
@@ -104,7 +111,7 @@ export default function () {
                         </div> */}
 
                         <div className="DiscussionListItem-options-blocks">
-                            <h3 className="">{highlight("0", this.highlightRegExp)}</h3>
+                            <h3 className="">{highlight(likes(), this.highlightRegExp)}</h3>
                             <p className="">{app.translator.trans('politica-ui.forum.likes')}</p>
                         </div>
 
@@ -132,7 +139,10 @@ export default function () {
                                 <Link className="author-link" href={user ? app.route.user(user) : '#'}>
                                     {avatar(user, { title: '' })}
                                     <div>
-                                        <p>{user.data.attributes.displayName}</p>
+                                        <p>{
+                                        
+                                        console.log(user),
+                                        user.data.attributes.displayName}</p>
                                         <p>{listItems(terminalPost)}</p>
                                     </div>
                                 </Link>

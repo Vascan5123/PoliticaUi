@@ -20,8 +20,6 @@ return [
         ->js(__DIR__ . '/js/dist/forum.js')
         ->css(__DIR__ . '/resources/less/forum.less'),
 
-    (new Extend\Event())->listen(Serializing::class, AddUserWeb3AddressAttribute::class),
-
     new Extend\Locales(__DIR__ . '/resources/locale')
 
 
